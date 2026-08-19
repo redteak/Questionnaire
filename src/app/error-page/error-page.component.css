@@ -1,0 +1,304 @@
+/* =========================
+   404 整個頁面
+========================= */
+
+.error-page {
+  position: relative;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px;
+
+  background: #f7f4ef;
+
+  overflow: hidden;
+
+  font-family:
+    "PingFang TC",
+    "Microsoft JhengHei",
+    sans-serif;
+}
+
+
+/* =========================
+   主要內容
+========================= */
+
+.error-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 650px;
+
+  padding: 60px 40px;
+
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   404 數字
+========================= */
+
+.error-number {
+  margin-bottom: 10px;
+
+  font-size: 120px;
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 5px;
+
+  color: #0284c7;
+}
+
+
+/* =========================
+   標題
+========================= */
+
+.error-content h1 {
+  margin: 15px 0;
+
+  font-size: 32px;
+  font-weight: 700;
+
+  color: #333;
+}
+
+
+/* =========================
+   說明文字
+========================= */
+
+.error-content p {
+  max-width: 500px;
+
+  margin: 0 auto 30px;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  color: #666;
+}
+
+
+/* =========================
+   按鈕區
+========================= */
+
+.button-group {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 15px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================
+   返回首頁
+========================= */
+
+.home-btn {
+  display: inline-flex;
+
+  justify-content: center;
+  align-items: center;
+
+  min-width: 130px;
+
+  padding: 12px 24px;
+
+  color: white;
+
+  background: #0284c7;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+
+/* 滑鼠移上去 */
+
+.home-btn:hover {
+  background: #0369a1;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 15px rgba(2, 132, 199, 0.25);
+}
+
+
+/* =========================
+   返回上一頁
+========================= */
+
+.back-btn {
+  min-width: 130px;
+
+  padding: 11px 24px;
+
+  color: #555;
+
+  background: white;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+/* 滑鼠移上去 */
+
+.back-btn:hover {
+  color: #333;
+
+  background: #f5f5f5;
+
+  border-color: #bbb;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   背景圓形裝飾
+========================= */
+
+.bg-circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+
+/* 左上角 */
+
+.circle-1 {
+  width: 300px;
+  height: 300px;
+
+  top: -100px;
+  left: -100px;
+
+  background: rgba(2, 132, 199, 0.12);
+}
+
+
+/* 右下角 */
+
+.circle-2 {
+  width: 400px;
+  height: 400px;
+
+  right: -150px;
+  bottom: -150px;
+
+  background: rgba(251, 146, 60, 0.12);
+}
+
+
+/* =========================
+   手機版
+========================= */
+
+@media (max-width: 600px) {
+
+  .error-page {
+    padding: 20px;
+  }
+
+
+  .error-content {
+    padding: 45px 25px;
+
+    border-radius: 16px;
+  }
+
+
+  .error-number {
+    font-size: 80px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .error-content h1 {
+    font-size: 25px;
+  }
+
+
+  .error-content p {
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+
+  .button-group {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+
+  .home-btn,
+  .back-btn {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+
+  .circle-1 {
+    width: 180px;
+    height: 180px;
+  }
+
+
+  .circle-2 {
+    width: 250px;
+    height: 250px;
+  }
+
+}
