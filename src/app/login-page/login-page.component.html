@@ -28,27 +28,40 @@
       <h2>登入</h2>
 
       <!-- 帳號 -->
-      <div class="input-group">
-        <label for="account">帳號</label>
-        <input
-          id="account"
-          type="text"
-          placeholder="請輸入帳號"
-          [(ngModel)]="account"
-        >
-      </div>
+      <form (ngSubmit)="Login()">
+        <div class="input-group">
+          <label for="account">帳號</label>
+          <input
+            id="account"
+            name="account"
+            type="text"
+            placeholder="請輸入帳號"
+            [(ngModel)]="account"
+          >
+        </div>
 
 
-      <!-- 密碼 -->
-      <div class="input-group">
-        <label for="password">密碼</label>
-        <input
-          id="password"
-          type="password"
-          placeholder="請輸入密碼"
-          [(ngModel)]="passworld"
-        >
-      </div>
+        <!-- 密碼 -->
+        <div class="input-group">
+          <label for="password">密碼</label>
+          <div class="password-group">
+            <input id="password"
+                  name="password"
+                  [type]="showPassword ? 'text' : 'password'"
+                  placeholder="請輸入密碼"
+                  [(ngModel)]="password"
+                  >
+
+                <button
+                  type="button"
+                  class="eye-btn"
+                  (click)="showPassword = !showPassword"
+                >
+                  {{ showPassword ? '👁' : '👁‍🗨' }}
+                </button>
+          </div>
+        </div>
+
 
 
       <!-- 記住我 / 忘記密碼 -->
@@ -67,10 +80,10 @@
 
 
       <!-- 登入按鈕 -->
-      <button class="login-btn" (click)="Login()">
+      <button type="submit" class="login-btn">
         登入
       </button>
-
+      </form>
 
       <!-- 註冊 -->
       <p class="register-text">

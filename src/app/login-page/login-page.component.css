@@ -304,3 +304,12 @@
 .register-text a:hover {
   text-decoration: underline;
 }
+
+.password-group{
+  display: flex;
+}
+
+.eye-btn{
+  width: 30px;
+  height: 42px;
+}

@@ -7,8 +7,8 @@ export class AccountService {
 
   constructor() { }
 
-  account = [{account:'admin' , password:123456},
-             {account:'user1' , password:654321},
-             {account:'user2' , password:456789}
+  account = [{account:'admin' , password:'123456' , permissions:'admin'},
+             {account:'user1' , password:'654321' , permissions:'user'},
+             {account:'user2' , password:'456789' , permissions:'user'}
   ]
 }
