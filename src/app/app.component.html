@@ -1,1 +1,60 @@
+<!-- =========================
+       Header
+  ========================== -->
+  <header class="header">
+
+    <div class="logo">
+      <span class="logo-icon">✦</span>
+
+      <div>
+        <h1>問卷小站</h1>
+        <p>Questionnaire</p>
+      </div>
+    </div>
+
+    <nav class="function-menu">
+      <button class="menu-btn active" routerLink="/home">首頁</button>
+      @if(isLogin()){
+      <button class="menu-btn">我的問卷 </button>
+      }
+      @if(isAdmin()){
+      <button class="menu-btn">管理</button>
+      }
+      @if(!isLogin()){
+      <button class="menu-btn" routerLink="/login">登入</button>
+      }
+      @if(isLogin()){
+      <button class="menu-btn" (click)="logout()">登出</button>
+      }
+    </nav>
+  </header>
+
+
 <router-outlet></router-outlet>
+
+<!-- =========================
+       Footer
+  ========================== -->
+  <footer class="footer">
+
+    <div class="footer-content">
+
+      <div class="footer-title">
+        <span>✦</span>
+        <h3>問卷小站</h3>
+        <span>✦</span>
+      </div>
+
+      <div class="footer-notice">
+        <p>・請依照實際情況填寫問卷內容。</p>
+        <p>・送出問卷前請確認填寫資料是否正確。</p>
+        <p>・部分問卷送出後將無法再次修改。</p>
+      </div>
+
+      <p class="copyright">
+        © 2026 Questionnaire Platform
+      </p>
+
+    </div>
+
+  </footer>

@@ -1,0 +1,440 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color: #594a42;
+  background-color: #f8f1e7;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f1e7;
+  background-image: linear-gradient(#eadfd2 1px, transparent 1px), linear-gradient(90deg, #eadfd2 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  min-height: 1200px;
+  padding: 60px 20px 70px;
+  position: relative;
+}
+
+.questionnaire-section {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.section-title {
+  position: relative;
+  min-height: 190px;
+  margin-bottom: 38px;
+  padding: 35px 220px 35px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 253, 249, 0.96);
+  border: 1px solid #ead8c8;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(119, 82, 58, 0.08);
+}
+
+.title-content {
+  text-align: center;
+}
+
+.title-tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #c47c50;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.section-title h2 {
+  margin-bottom: 10px;
+  color: #59443a;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.section-title p {
+  color: #9b8274;
+  font-size: 14px;
+}
+
+.date-filter-btn {
+  position: absolute;
+  right: 35px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 175px;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #d8bba5;
+  border-radius: 11px;
+  background-color: #fffdf9;
+  color: #755747;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.date-filter-btn:hover {
+  background-color: #fff3e8;
+  border-color: #d99262;
+  color: #b7673d;
+}
+
+.date-picker {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 380px;
+  padding: 24px;
+  background-color: #fffaf5;
+  border: 1px solid #ead8c8;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(119, 82, 58, 0.16);
+  z-index: 100;
+}
+
+/* 小箭頭 */
+.date-picker::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  right: 30px;
+  width: 13px;
+  height: 13px;
+  background-color: #fffaf5;
+  border-left: 1px solid #ead8c8;
+  border-top: 1px solid #ead8c8;
+  transform: rotate(45deg);
+}
+
+/* 日期區域 */
+.date-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.date-item label {
+  color: #80695c;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 日期輸入框 */
+.date-item input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #ddc8b8;
+  border-radius: 9px;
+  background-color: #fffdf9;
+  color: #594a42;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.date-item input:hover {
+  border-color: #d9a17e;
+}
+
+.date-item input:focus {
+  border-color: #e89b6b;
+  box-shadow: 0 0 0 3px rgba(232, 155, 107, 0.12);
+}
+
+/* 開始 ～ 結束 */
+.date-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.date-separator {
+  padding-bottom: 11px;
+  color: #b28d76;
+  font-size: 16px;
+}
+
+/* 按鈕區 */
+.date-actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px dashed #e5d5c7;
+}
+
+.date-actions button {
+  padding: 9px 18px;
+  border: 1px solid #ddc8b8;
+  border-radius: 9px;
+  background-color: #fffdf9;
+  color: #80695c;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.date-actions button:hover {
+  background-color: #f8e4d2;
+  border-color: #df9a6a;
+  color: #b7673d;
+}
+
+.date-actions button:last-child {
+  border-color: #e89b6b;
+  background-color: #e89b6b;
+  color: #ffffff;
+}
+
+.date-actions button:last-child:hover {
+  background-color: #ce7848;
+  border-color: #ce7848;
+}
+
+.calendar-icon {
+  color: #c87c4f;
+  font-size: 16px;
+}
+
+.arrow {
+  margin-left: 3px;
+  font-size: 16px;
+}
+
+.questionnaire-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.questionnaire-card {
+  min-width: 0;
+  padding: 24px;
+  background-color: rgba(255, 252, 247, 0.97);
+  border: 1px solid #ead8c8;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(119, 82, 58, 0.08);
+  transition: 0.25s;
+}
+
+.questionnaire-card:hover {
+  transform: translateY(-5px);
+  border-color: #e5a477;
+  box-shadow: 0 12px 30px rgba(119, 82, 58, 0.13);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.card-number {
+  color: #c97847;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card-status {
+  padding: 5px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  position: relative;
+}
+
+.card-status::after {
+  content: "開始：" attr(data-start) "\A結束：" attr(data-end);
+  white-space: pre;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #594a42;
+  color: #ffffff;
+  font-size: 11px;
+  line-height: 1.6;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+  z-index: 10;
+}
+
+.card-status:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.card-icon {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: #ffe7c9;
+  font-size: 27px;
+}
+
+.icon-yellow {
+  background-color: #fff0bb;
+}
+
+.icon-pink {
+  background-color: #ffe0d5;
+}
+
+.icon-red {
+  background-color: #ffdcd7;
+}
+
+.icon-green {
+  background-color: #e9edc9;
+}
+
+.icon-purple {
+  background-color: #eadbed;
+}
+
+.questionnaire-card h3 {
+  margin-bottom: 9px;
+  color: #60483d;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.questionnaire-card p {
+  min-height: 66px;
+  margin-bottom: 17px;
+  color: #927d70;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.card-info {
+  display: flex;
+  gap: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed #e5d5c7;
+  color: #aa9182;
+  font-size: 12px;
+}
+
+.start-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 11px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ed995f;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.start-btn:hover {
+  background-color: #ce7848;
+}
+
+.pagination {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.page-btn {
+  width: 50px;
+  height: 38px;
+  border: 1px solid #ead8c8;
+  border-radius: 9px;
+  background-color: rgba(255, 252, 247, 0.95);
+  color: #80695c;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.page-number-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #ead8c8;
+  border-radius: 9px;
+  background-color: rgba(255, 252, 247, 0.95);
+  color: #80695c;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.page-btn:hover {
+  background-color: #f8e4d2;
+  border-color: #df9a6a;
+  color: #b7673d;
+}
+
+.page-btn.active-page {
+  border-color: #e89b6b;
+  background-color: #e89b6b;
+  color: #ffffff;
+}
+
+.page-btn.arrow-btn {
+  font-size: 22px;
+  color: #a47760;
+}
+
+.page-dots {
+  padding: 0 4px;
+  color: #a88e7f;
+  font-size: 14px;
+}
+
+.not-started {
+  background-color: #cfcfcf;
+  color: #4B5563;
+}
+
+.active {
+  background-color: #f8e8d5;
+  color: #b96f48;
+}
+
+.expired {
+  background-color: #FEE2E2;
+  color: #B91C1C;
+}

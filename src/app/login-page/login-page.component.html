@@ -24,73 +24,80 @@
         右半邊：登入區
     ========================== -->
     <div class="login-right">
+      <form [formGroup]="loginform" (submit)="Login()">
+        <div formArrayName="question">
+          @for (control of questionArray.controls; track $index) {
 
-      <h2>登入</h2>
+            <h2>登入</h2>
 
-      <!-- 帳號 -->
-      <form (ngSubmit)="Login()">
-        <div class="input-group">
-          <label for="account">帳號</label>
-          <input
-            id="account"
-            name="account"
-            type="text"
-            placeholder="請輸入帳號"
-            [(ngModel)]="account"
-          >
-        </div>
-
-
-        <!-- 密碼 -->
-        <div class="input-group">
-          <label for="password">密碼</label>
-          <div class="password-group">
-            <input id="password"
-                  name="password"
-                  [type]="showPassword ? 'text' : 'password'"
-                  placeholder="請輸入密碼"
-                  [(ngModel)]="password"
-                  >
-
-                <button
-                  type="button"
-                  class="eye-btn"
-                  (click)="showPassword = !showPassword"
+            <!-- 帳號 -->
+              <div class="input-group" [formGroupName]="$index">
+                <label for="account">帳號</label>
+                <input
+                  id="account"
+                  name="account"
+                  type="text"
+                  placeholder="請輸入帳號"
+                  formControlName="account"
                 >
-                  {{ showPassword ? '👁' : '👁‍🗨' }}
-                </button>
-          </div>
+              </div>
+
+
+              <!-- 密碼 -->
+              <div class="input-group" [formGroupName]="$index">
+                <label for="password">密碼</label>
+                <div class="password-group">
+                  <input id="password"
+                        name="password"
+                        [type]="showPassword ? 'text' : 'password'"
+                        placeholder="請輸入密碼"
+                        formControlName="password"
+                        >
+
+                      <button
+                        type="button"
+                        class="eye-btn"
+                        (click)="showPassword = !showPassword"
+                      >
+                        {{ showPassword ? '👁' : '👁‍🗨' }}
+                      </button>
+                </div>
+              </div>
+
+
+
+            <!-- 記住我 / 忘記密碼 -->
+            <div class="login-options" [formGroupName]="$index">
+
+              <label>
+                <input id="rememberAccount"
+                      name="rememberAccount"
+                      type="checkbox"
+                      formControlName="rememberAccount">
+                記住我
+              </label>
+
+              <a href="#">
+                忘記密碼？
+              </a>
+
+            </div>
+
+
+            <!-- 登入按鈕 -->
+            <button type="submit" class="login-btn">
+              登入
+            </button>
+
+            <!-- 註冊 -->
+            <p class="register-text">
+              還沒有帳號？
+              <a href="#">立即註冊</a>
+            </p>
+
+          }
         </div>
-
-
-
-      <!-- 記住我 / 忘記密碼 -->
-      <div class="login-options">
-
-        <label>
-          <input type="checkbox">
-          記住我
-        </label>
-
-        <a href="#">
-          忘記密碼？
-        </a>
-
-      </div>
-
-
-      <!-- 登入按鈕 -->
-      <button type="submit" class="login-btn">
-        登入
-      </button>
       </form>
-
-      <!-- 註冊 -->
-      <p class="register-text">
-        還沒有帳號？
-        <a href="#">立即註冊</a>
-      </p>
-
     </div>
 
   </div>

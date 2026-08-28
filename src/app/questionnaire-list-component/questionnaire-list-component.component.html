@@ -1,0 +1,146 @@
+<div class="page">
+
+  <!-- =========================
+       Main
+  ========================== -->
+  <main class="main">
+
+    <section class="questionnaire-section">
+
+      <!-- =========================
+           問卷標題區
+           左邊標題
+           右邊日期篩選
+      ========================== -->
+      <div class="section-title">
+
+        <div class="title-content">
+          <span class="title-tag">QUESTIONNAIRE</span>
+
+          <h2>現在有哪些問卷？</h2>
+
+          <p>選擇一份問卷，花幾分鐘分享你的想法。</p>
+        </div>
+
+        <!-- 日期區間篩選按鈕 -->
+        <div class="date-filter">
+
+          <button class="date-filter-btn" (click)="showDatePicker = !showDatePicker">
+
+            <span class="calendar-icon">▣</span>
+            <span>日期區間篩選</span>
+            <span class="arrow">⌄</span>
+
+          </button>
+
+
+          @if (showDatePicker) {
+
+          <div class="date-picker">
+
+            <div class="date-item">
+              <label>開始日期</label>
+              <input type="date" [(ngModel)]="startDate">
+            </div>
+
+            <span class="date-separator">～</span>
+
+            <div class="date-item">
+              <label>結束日期</label>
+              <input type="date" [(ngModel)]="endDate">
+            </div>
+
+            <div class="date-actions">
+
+              <button type="button" (click)="startDate = ''; endDate = ''; currentPage = 1">
+                清除
+              </button>
+
+              <button type="button" (click)="currentPage = 1; showDatePicker = false">
+                套用
+              </button>
+
+            </div>
+
+          </div>
+
+          }
+
+        </div>
+      </div>
+
+
+      <!-- =========================
+           問卷列表
+           一次顯示 6 張
+           3 欄 × 2 列
+      ========================== -->
+      <div class="questionnaire-list">
+
+        @for (suverylist of currentSurveys; track $index) {
+        <article class="questionnaire-card">
+
+          <div class="card-top">
+            <span class="card-number">問卷 {{ ((currentPage - 1) * pageSize + $index + 1).toString().padStart(2, '0')
+              }}</span>
+            <span class="card-status" [class.not-started]="getSurveyStatus(suverylist) === '尚未開始'"
+              [class.active]="getSurveyStatus(suverylist) === '進行中'"
+              [class.expired]="getSurveyStatus(suverylist) === '已結束'" [attr.data-start]="suverylist.value.startTime"
+              [attr.data-end]="suverylist.value.endTime">
+              {{getSurveyStatus(suverylist)}}
+            </span>
+          </div>
+
+          <div class="card-icon">{{suverylist.value.icon}}</div>
+
+          <h3>{{suverylist.value.surveyTitle}}</h3>
+
+          <p>
+            {{suverylist.value.suveryIntroduce}}
+          </p>
+
+          <div class="card-info">
+            <span>▣ {{ suverylist.get('questions')?.value?.length }} 題</span>
+            <span>◷ 預估作答時間: {{suverylist.value.answerTime}} 分鐘</span>
+          </div>
+
+          <button class="start-btn">
+            開始填寫 →
+          </button>
+
+        </article>
+        }
+
+      </div>
+
+
+      <!-- =========================
+           分頁
+           之後可以接 Angular
+      ========================== -->
+      <div class="pagination">
+        <button class="page-btn" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+          上一頁
+        </button>
+
+        @for(page of [].constructor(totalPages);track $index){
+        <button class="page-number-btn" (click)="changePage($index + 1)" [class.active]="currentPage === $index + 1">
+          {{ $index + 1 }}
+        </button>
+        }
+
+        <button class="page-btn" (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+          下一頁
+        </button>
+
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+
+</div>

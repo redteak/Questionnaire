@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { QuestionnaireListComponentComponent } from '../questionnaire-list-component/questionnaire-list-component.component';
 
 @Component({
   selector: 'app-user-index-page',
-  imports: [],
+  imports: [QuestionnaireListComponentComponent],
   templateUrl: './user-index-page.component.html',
   styleUrl: './user-index-page.component.css'
 })
